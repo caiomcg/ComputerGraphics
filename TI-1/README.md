@@ -34,7 +34,7 @@ Na função acima pode-se verificar o seguinte:
 
 1. x é a posição onde o pixel estará em relação a largura da tela;
 2. y é a posição onde o pixel estará em relação a altura da tela;
-3. screenWidth é a largura da tela.
+3. IMAGE_WIDTH é a largura da tela.
 
 Mas o que é 4? 4 define o tamanho de um pixel. Cada pixel da aplicação segue o formato RGBA, ou seja, a mesma utiliza quatro canais para representar a cor.
 
