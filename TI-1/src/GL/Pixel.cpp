@@ -5,6 +5,14 @@ Pixel::Pixel(const int x, const int y) {
     this->y = y;
 }
 
-int Pixel::initialPosition(const int screenWidth) {
-    return (x + (y * screenWidth)) * 4;
+int Pixel::initialPosition() {
+    return (x + (y * IMAGE_WIDTH)) * 4;
+}
+
+bool Pixel::isValid() const {
+    if (x >= 0 && x <= IMAGE_WIDTH && y >=0 && y <= IMAGE_HEIGHT){
+        return true;
+    }
+
+    return false;
 }

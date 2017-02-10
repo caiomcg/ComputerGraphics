@@ -9,10 +9,14 @@
 #include "Color.h"
 
 void PutPixel(Pixel pixel, Color color) {
-    int initialPosition = pixel.initialPosition(IMAGE_WIDTH);
+    if (pixel.isValid())  {
+        int initialPosition = pixel.initialPosition();
 
-    for (int i = 0; i < 4; i++) {
-        FBptr[initialPosition++] = color.rgba[i];
+        for (int i = 0; i < 4; i++) {
+            FBptr[initialPosition++] = color.rgba[i];
+        }
+    } else {
+        std::cerr << "Coordinates " << pixel.x << " and " << pixel.y << " are out of bounds\n";
     }
 }
 

@@ -8,7 +8,8 @@ struct Pixel {
     int y;
 
     Pixel(const int x, const int y);
-    int initialPosition(const int screenWidth);
+    int initialPosition();
+    bool isValid() const;
 };
 
 #endif //GL_PIXEL_H
