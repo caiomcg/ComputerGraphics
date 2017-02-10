@@ -2,7 +2,8 @@
 
 //-----------------------------------------------------------------------------
 void MyGlDraw(void) {
-	DrawCanvas();
+	DrawCanvas(8);
+	//DrawLine(Pixel(IMAGE_WIDTH/2, IMAGE_WIDTH/2), Pixel(IMAGE_WIDTH, 0));
 }
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv) {

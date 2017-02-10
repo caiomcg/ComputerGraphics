@@ -1,6 +1,8 @@
 #ifndef GL_PIXEL_H
 #define GL_PIXEL_H
 
+#include "definitions.h"
+
 struct Pixel {
     int x;
     int y;
