@@ -6,5 +6,5 @@ Pixel::Pixel(const int x, const int y) {
 }
 
 int Pixel::initialPosition(const int screenWidth) {
-    return x*4 + y*screenWidth*4;
+    return (x + (y * screenWidth)) * 4;
 }
