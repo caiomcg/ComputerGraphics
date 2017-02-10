@@ -81,7 +81,7 @@ void DrawCanvas(int pixelSpread) {
 
 <p align="center">
 	<br>
-	<img src="./screenshots/PutPixel.png"/ width=600px height=400px>
+	<img src="./screenshots/PutPixel.png"/>
 	<h5 align="center">Figura 2 - Validação da função PutPixel</h5>
 	<br>
 </p>
