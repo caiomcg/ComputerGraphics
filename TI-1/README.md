@@ -13,7 +13,7 @@ na linguagem C++ e todo o seu código fonte pode ser encontrado na pasta TI-1 de
 ### Rasterização de pontos
 
 A rasterização é o processo de "escrever imagens" na tela, ou seja, é a transição da imagem do meio virtual para a sua
-representação visual através do display de vídeo. Para realizar está operação devemos ativar os pixels do display com cores
+representação visual através do display de vídeo. Para realizar está operação deve-se ativar os pixels do display com cores
 específicas com o intuito de formar imagens. Os pixels são representados em uma malha - **Figura 1** - ```X x Y``` onde ```X``` é a largura da tela e ```Y``` é a altura da mesma - em uma tela Full HD existem ```1920x1080 pixels```.
 <p align="center">
 	<br>
@@ -22,7 +22,7 @@ específicas com o intuito de formar imagens. Os pixels são representados em um
 	<br>
 </p>
 
-Para sabermos o local correto de desenhar o pixel, devemos calcular o offset do mesmo com base na dimensão da janela. A posição retornada pelo offset será o primeiro byte onde o pixel está definido. O método que encontra tal posição pode ser visto a seguir:
+Para identificar o local correto de desenhar o pixel, deve-se calcular o offset do mesmo com base na dimensão da janela. A posição retornada pelo offset será o primeiro byte onde o pixel está definido. O método que encontra tal posição pode ser visto a seguir:
 
 ``` C++
 int Pixel::initialPosition(const int screenWidth) {
@@ -30,7 +30,7 @@ int Pixel::initialPosition(const int screenWidth) {
 }
 ```
 
-Na função acima podemos verificar o seguinte:
+Na função acima pode-se verificar o seguinte:
 
 1. x é a posição onde o pixel estará em relação a largura da tela;
 2. y é a posição onde o pixel estará em relação a altura da tela;
@@ -44,3 +44,44 @@ Mas o que é 4? 4 define o tamanho de um pixel. Cada pixel da aplicação segue 
 4. A - Canal Alpha - Transparência
 
 Cada canal possui um byte - 256 combinações por canal -  responsável por armazenar a sua informação. Logo, podemos compreender que ```1R + 1B + 1G + 1A = 4 bytes```.
+
+Sabendo destas informações foi implementada a primeira técnica de rasterização, desenhar um pixel na tela. A rasterização do ponto é implementada na função PutPixel, descrita abaixo:
+``` C++
+void PutPixel(Pixel pixel, Color color) {
+    if (pixel.isValid())  {
+        int initialPosition = pixel.initialPosition();
+
+        for (int i = 0; i < 4; i++) {
+            FBptr[initialPosition++] = color.rgba[i];
+        }
+    } else {
+        std::cerr << "Coordinates " << pixel.x << " and " << pixel.y << " are out of bounds\n";
+    }
+}
+```
+
+Para validar a função PutPixel, foi definida a função DrawCanvas que utiliza a mesma para desenhar borda e pixels espaçados na tela. A função pode ser vista abaixo, já o desenho pode ser visto na **Figura 2**.
+``` C++
+void DrawCanvas(int pixelSpread) {
+    int initialCrosshair = IMAGE_WIDTH/2 - 50;
+    int finalCrosshair   = IMAGE_WIDTH/2 + 50;
+
+    for (int i = 0; i < IMAGE_WIDTH; i++) {
+		PutPixel(Pixel(i, 0), Color(0 ,255,0 ,255));
+		PutPixel(Pixel(i, IMAGE_HEIGHT-1), Color(0 ,255,0 ,255));
+		PutPixel(Pixel(i, IMAGE_HEIGHT/2), (i % pixelSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color()));
+	}
+	for (int i = 1; i < IMAGE_HEIGHT - 1; i++) {
+		PutPixel(Pixel(IMAGE_HEIGHT-1, i), Color(0 ,255,0 ,255));
+		PutPixel(Pixel(0, i), Color(0 ,255,0 ,255));
+		PutPixel(Pixel(IMAGE_WIDTH/2, i), (i % pixelSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color()));
+	}
+}
+```
+
+<p align="center">
+	<br>
+	<img src="./screenshots/PutPixel.png"/ width=600px height=400px>
+	<h5 align="center">Figura 2 - Validação da função PutPixel</h5>
+	<br>
+</p>
