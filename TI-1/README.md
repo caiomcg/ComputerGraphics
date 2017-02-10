@@ -25,8 +25,8 @@ específicas com o intuito de formar imagens. Os pixels são representados em um
 Para identificar o local correto de desenhar o pixel, deve-se calcular o offset do mesmo com base na dimensão da janela. A posição retornada pelo offset será o primeiro byte onde o pixel está definido. O método que encontra tal posição pode ser visto a seguir:
 
 ``` C++
-int Pixel::initialPosition(const int screenWidth) {
-    return (x + (y * screenWidth)) * 4;
+int Pixel::initialPosition() {
+    return (x + (y * IMAGE_WIDTH)) * 4;
 }
 ```
 
