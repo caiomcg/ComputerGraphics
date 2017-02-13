@@ -1,6 +1,12 @@
 # TI-1
 Algoritmos de rasterização
 
+## Menu
+
+* [Introdução](#introdução)
+* [Rasterização de pontos](#rasterização-de-pontos)
+* [Rasterizaçõa de retas](#rasterização-de-retas)
+
 ---
 
 ## Introdução
