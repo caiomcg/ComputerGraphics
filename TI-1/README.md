@@ -6,6 +6,7 @@ Algoritmos de rasterização
 * [Introdução](#introdução)
 * [Rasterização de pontos](#rasterização-de-pontos)
 * [Rasterização de retas](#rasterização-de-retas)
+* [Referências](#referências)
 
 ---
 
@@ -94,3 +95,7 @@ void DrawCanvas(int vertexSpread) {
 
 ### Rasterização de retas
 
+
+### Referências
+
+* [https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html](https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html)
