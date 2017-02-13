@@ -5,7 +5,7 @@ Algoritmos de rasterização
 
 * [Introdução](#introdução)
 * [Rasterização de pontos](#rasterização-de-pontos)
-* [Rasterizaçõa de retas](#rasterização-de-retas)
+* [Rasterização de retas](#rasterização-de-retas)
 
 ---
 
@@ -91,3 +91,6 @@ void DrawCanvas(int vertexSpread) {
 	<h5 align="center">Figura 2 - Validação da função PutPixel</h5>
 	<br>
 </p>
+
+### Rasterização de retas
+
