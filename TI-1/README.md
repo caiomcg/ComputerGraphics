@@ -47,34 +47,34 @@ Cada canal possui um byte - 256 combinações por canal -  responsável por arma
 
 Sabendo destas informações foi implementada a primeira técnica de rasterização, desenhar um pixel na tela. A rasterização do ponto é implementada na função PutPixel, descrita abaixo:
 ``` C++
-void PutPixel(Pixel pixel, Color color) {
-    if (pixel.isValid())  {
-        int initialPosition = pixel.initialPosition();
+void PutPixel(Vertex vertex) {
+    if (vertex.isValid())  {
+        int initialPosition = vertex.initialPosition();
 
         for (int i = 0; i < 4; i++) {
-            FBptr[initialPosition++] = color.rgba[i];
+            FBptr[initialPosition++] = vertex.color.rgba[i];
         }
     } else {
-        std::cerr << "Coordinates " << pixel.x << " and " << pixel.y << " are out of bounds\n";
+        std::cerr << "Coordinates " << vertex.x << " and " << vertex.y << " are out of bounds\n";
     }
 }
 ```
 
 Para validar a função PutPixel, foi definida a função DrawCanvas que utiliza a mesma para desenhar borda e pixels espaçados na tela. A função pode ser vista abaixo, já o desenho pode ser visto na **Figura 2**.
 ``` C++
-void DrawCanvas(int pixelSpread) {
+void DrawCanvas(int vertexSpread) {
     int initialCrosshair = IMAGE_WIDTH/2 - 50;
     int finalCrosshair   = IMAGE_WIDTH/2 + 50;
 
     for (int i = 0; i < IMAGE_WIDTH; i++) {
-		PutPixel(Pixel(i, 0), Color(0 ,255,0 ,255));
-		PutPixel(Pixel(i, IMAGE_HEIGHT-1), Color(0 ,255,0 ,255));
-		PutPixel(Pixel(i, IMAGE_HEIGHT/2), (i % pixelSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color()));
+		PutPixel(Vertex(i, 0, Color(0 ,255,0 ,255)));
+		PutPixel(Vertex(i, IMAGE_HEIGHT-1, Color(0 ,255,0 ,255)));
+		PutPixel(Vertex(i, IMAGE_HEIGHT/2, (i % vertexSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color())));
 	}
 	for (int i = 1; i < IMAGE_HEIGHT - 1; i++) {
-		PutPixel(Pixel(IMAGE_HEIGHT-1, i), Color(0 ,255,0 ,255));
-		PutPixel(Pixel(0, i), Color(0 ,255,0 ,255));
-		PutPixel(Pixel(IMAGE_WIDTH/2, i), (i % pixelSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color()));
+		PutPixel(Vertex(IMAGE_HEIGHT-1, i, Color(0 ,255,0 ,255)));
+		PutPixel(Vertex(0, i, Color(0 ,255,0 ,255)));
+		PutPixel(Vertex(IMAGE_WIDTH/2, i,  (i % vertexSpread == 0 ? (i > initialCrosshair && i < finalCrosshair ? Color(255, 0 ,0 ,255) :  Color(255, 255, 0, 255)) : Color())));
 	}
 }
 ```
