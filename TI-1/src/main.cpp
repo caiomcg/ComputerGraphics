@@ -2,12 +2,10 @@
 
 //-----------------------------------------------------------------------------
 void MyGlDraw(void) {
-	DrawCanvas(8);
-	//DrawLine(Pixel(IMAGE_WIDTH/2, IMAGE_WIDTH/2), Pixel(IMAGE_WIDTH, 0));
+	DrawLine(Vertex(0, 0, Color(255, 0, 0, 255)), Vertex(200, 30, Color(0, 255, 0, 255)));
 }
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv) {
-
 	InitOpenGL(&argc, argv);
 	InitCallBacks();
 	InitDataStructures();
