@@ -82,8 +82,8 @@ void DrawLine(Vertex initialVertex, Vertex finalVertex) {
         newColor[2] += variance[2];
         newColor[3] += variance[3];
 
-
         baseDistance += sAxis;
+        
         if (baseDistance <= fAxis) {
             currentX += xFinalIncrement;
             currentY += yFinalIncrement;
