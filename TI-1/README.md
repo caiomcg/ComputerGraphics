@@ -171,7 +171,7 @@ void DrawTriangle(Vertex fVertex, Vertex sVertex, Vertex tVertex) {
 ```
 <p align="center">
 	<br>
-	<img src="./screenshots/DrawRectInterpolated.png"/>
+	<img src="./screenshots/drawTriangle.png"/>
 	<h5 align="center">Figura 6 -Linhas interpoladas</h5>
 	<br>
 </p>
@@ -184,7 +184,7 @@ Sabendo de tal variação devemos incrementar o valor de cada novo pixel a este 
 
 <p align="center">
 	<br>
-	<img src="./screenshots/drawTriangle.png"/>
+	<img src="./screenshots/DrawRectInterpolated.png"/>
 	<h5 align="center">Figura 7 - Rasterização de triângulos</h5>
 	<br>
 </p>
