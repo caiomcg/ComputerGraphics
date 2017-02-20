@@ -20,27 +20,86 @@ void PutPixel(Vertex vertex) {
     }
 }
 
+
 void DrawLine(Vertex initialVertex, Vertex finalVertex) {
+    int yInitialIncrement = 0;
+    int yFinalIncrement   = 0;
+    int xInitialIncrement = 0;
+    int xFinalIncrement   = 0;
+
     int xDistance    = finalVertex.x - initialVertex.x;
     int yDistance    = finalVertex.y - initialVertex.y;
 
+    int fAxis      = std::abs(xDistance);
+    int sAxis      = std::abs(yDistance);
+
     int currentY     = initialVertex.y;
-    int baseDistance = (yDistance << 1) - xDistance;
+    int currentX     = initialVertex.x;
 
-    int eIncrement   = (yDistance << 1);
-    int seIncrement  = (yDistance - xDistance) << 1;
-
-    PutPixel(Vertex(initialVertex.x, currentY, initialVertex.color));
-
-    for (int currentX = initialVertex.x + 1; currentX <= finalVertex.x; currentX++) {
-        if (baseDistance <= 0) {
-            baseDistance += eIncrement;
-        } else {
-            currentY++;
-            baseDistance += seIncrement;
-        }
-        PutPixel(Vertex(currentX, currentY, initialVertex.color));
+    if (xDistance < 0) {
+        xInitialIncrement = -1;
+        xFinalIncrement   = -1;
+    } else if (xDistance > 0) {
+        xInitialIncrement =  1;
+        xFinalIncrement   =  1;
     }
+    if (yDistance < 0) {
+        yInitialIncrement = -1;
+    } else if (yDistance > 0) {
+        yInitialIncrement =  1;
+    }
+
+    if (fAxis < sAxis) {
+        std::swap(fAxis, sAxis);
+        if (yDistance < 0) {
+            yFinalIncrement = -1;
+        } else if (yDistance > 0) {
+            yFinalIncrement =  1;
+        }
+        xFinalIncrement = 0;
+    }
+
+    int baseDistance = fAxis << 1;
+
+    Color interpolatedColor = initialVertex.color;
+    std::cout << "R - " << (int)(initialVertex.color.rgba[0] - finalVertex.color.rgba[0]) << std::endl;
+    std::cout << "G - " << (int)(initialVertex.color.rgba[1] - finalVertex.color.rgba[1]) << std::endl;
+    std::cout << "B - " << (int)(initialVertex.color.rgba[2] - finalVertex.color.rgba[2]) << std::endl;
+    std::cout << "A - " << (int)(initialVertex.color.rgba[3] - finalVertex.color.rgba[3]) << std::endl;
+    std::cout << "\nAxis " << fAxis << std::endl;
+    std::cout << "\nR - " << (int)(initialVertex.color.rgba[0] - finalVertex.color.rgba[0])/fAxis << std::endl;
+    std::cout << "G - " << (int)(initialVertex.color.rgba[1] - finalVertex.color.rgba[1])/fAxis << std::endl;
+    std::cout << "B - " << (int)(initialVertex.color.rgba[2] - finalVertex.color.rgba[2])/fAxis << std::endl;
+    std::cout << "A - " << (int)(initialVertex.color.rgba[3] - finalVertex.color.rgba[3])/fAxis << std::endl;
+
+
+
+    Color colorIncrement((unsigned char)(finalVertex.color.rgba[0] - initialVertex.color.rgba[0])/fAxis,
+                         (unsigned char)(finalVertex.color.rgba[1] - initialVertex.color.rgba[1])/fAxis,
+                         (unsigned char)(finalVertex.color.rgba[2] - initialVertex.color.rgba[2])/fAxis,
+                         (unsigned char)(finalVertex.color.rgba[3] - initialVertex.color.rgba[3])/fAxis);
+
+    for (int i = 0; i <= fAxis; ++i) {
+        PutPixel(Vertex(currentX, currentY, interpolatedColor));
+        
+        interpolatedColor += colorIncrement;
+
+        baseDistance += sAxis;
+        if (baseDistance <= fAxis) {
+            currentX += xFinalIncrement;
+            currentY += yFinalIncrement;
+        } else {
+            baseDistance -= fAxis;
+            currentX += xInitialIncrement;
+            currentY += yInitialIncrement;
+        }
+    }
+}
+
+void DrawTriangle(Vertex fVertex, Vertex sVertex, Vertex tVertex) {
+    DrawLine(fVertex, sVertex);
+    DrawLine(sVertex, tVertex);
+    DrawLine(tVertex, fVertex);
 }
 
 void DrawCanvas(int vertexSpread) {
