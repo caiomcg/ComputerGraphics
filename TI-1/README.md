@@ -188,6 +188,13 @@ Sabendo de tal variação devemos incrementar o valor de cada novo pixel a este 
 	<h5 align="center">Figura 7 - Rasterização de triângulos</h5>
 	<br>
 </p>
+
+### Melhorias
+Creio que o algoritmo generalizado de Bresenham pode ser escrito de forma mais elegante e com uma quantidade menor de análises condicionais.
+
 ### Referências
 
 * [https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html](https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html)
+* [https://en.wikipedia.org/wiki/Bresenham's_line_algorithm](https://en.wikipedia.org/wiki/Bresenham's_line_algorithm)
+* [https://www.tutorialspoint.com/computer_graphics/line_generation_algorithm.htm](https://www.tutorialspoint.com/computer_graphics/line_generation_algorithm.htm)
+
