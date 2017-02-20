@@ -24,3 +24,12 @@ void Color::represent(void) {
     std::cout << "A - " << (int)rgba[3] << std::endl;
 
 }
+
+Color& Color::add(double* ar) {
+    this->rgba[0] += ar[0];
+    this->rgba[1] += ar[1];
+    this->rgba[2] += ar[2];
+    this->rgba[3] += ar[3];
+
+    return *this;
+}

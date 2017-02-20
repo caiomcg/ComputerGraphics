@@ -62,27 +62,26 @@ void DrawLine(Vertex initialVertex, Vertex finalVertex) {
     int baseDistance = fAxis << 1;
 
     Color interpolatedColor = initialVertex.color;
-    std::cout << "R - " << (int)(initialVertex.color.rgba[0] - finalVertex.color.rgba[0]) << std::endl;
-    std::cout << "G - " << (int)(initialVertex.color.rgba[1] - finalVertex.color.rgba[1]) << std::endl;
-    std::cout << "B - " << (int)(initialVertex.color.rgba[2] - finalVertex.color.rgba[2]) << std::endl;
-    std::cout << "A - " << (int)(initialVertex.color.rgba[3] - finalVertex.color.rgba[3]) << std::endl;
-    std::cout << "\nAxis " << fAxis << std::endl;
-    std::cout << "\nR - " << (int)(initialVertex.color.rgba[0] - finalVertex.color.rgba[0])/fAxis << std::endl;
-    std::cout << "G - " << (int)(initialVertex.color.rgba[1] - finalVertex.color.rgba[1])/fAxis << std::endl;
-    std::cout << "B - " << (int)(initialVertex.color.rgba[2] - finalVertex.color.rgba[2])/fAxis << std::endl;
-    std::cout << "A - " << (int)(initialVertex.color.rgba[3] - finalVertex.color.rgba[3])/fAxis << std::endl;
 
 
+    double variance[4] = {(double)(finalVertex.color.rgba[0] - initialVertex.color.rgba[0])/fAxis,
+                         (double)(finalVertex.color.rgba[1] - initialVertex.color.rgba[1])/fAxis,
+                         (double)(finalVertex.color.rgba[2] - initialVertex.color.rgba[2])/fAxis,
+                         (double)(finalVertex.color.rgba[3] - initialVertex.color.rgba[3])/fAxis};
 
-    Color colorIncrement((unsigned char)(finalVertex.color.rgba[0] - initialVertex.color.rgba[0])/fAxis,
-                         (unsigned char)(finalVertex.color.rgba[1] - initialVertex.color.rgba[1])/fAxis,
-                         (unsigned char)(finalVertex.color.rgba[2] - initialVertex.color.rgba[2])/fAxis,
-                         (unsigned char)(finalVertex.color.rgba[3] - initialVertex.color.rgba[3])/fAxis);
+    double newColor[4] = {(double)initialVertex.color.rgba[0],
+                          (double)initialVertex.color.rgba[1],
+                          (double)initialVertex.color.rgba[2],
+                          (double)initialVertex.color.rgba[3]};
 
     for (int i = 0; i <= fAxis; ++i) {
-        PutPixel(Vertex(currentX, currentY, interpolatedColor));
-        
-        interpolatedColor += colorIncrement;
+        PutPixel(Vertex(currentX, currentY, Color().add(newColor)));
+
+        newColor[0] += variance[0];
+        newColor[1] += variance[1];
+        newColor[2] += variance[2];
+        newColor[3] += variance[3];
+
 
         baseDistance += sAxis;
         if (baseDistance <= fAxis) {
