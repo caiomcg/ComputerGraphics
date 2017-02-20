@@ -1,2 +1,9 @@
 # ComputerGraphics
-Introduction to Computer Graphics
+
+Neste repositório estão contidos os trabalhos individuais da cadeira de Introdução a Computação Gráfica.
+
+---
+
+## Trabalhos individuais
+
+* [Rasterização de primitivas](https://github.com/caiomcg/ComputerGraphics/tree/master/TI-1)
