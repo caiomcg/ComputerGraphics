@@ -171,11 +171,23 @@ void DrawTriangle(Vertex fVertex, Vertex sVertex, Vertex tVertex) {
 ```
 <p align="center">
 	<br>
-	<img src="./screenshots/drawTriangle.png"/>
-	<h5 align="center">Figura 6 - Rasterização de triângulos</h5>
+	<img src="./screenshots/DrawRectInterpolated.png"/>
+	<h5 align="center">Figura 6 -Linhas interpoladas</h5>
 	<br>
 </p>
 
+### Interpolação de cores
+
+Para concluir, foi adicionado ao algoritmo de linha a funcionalidade de interpolação de cores. Para realizar uma mudança gradual foi calculada a variação entre a cor inicial e final sobre os pixels da reta x. ```VARIACAO = (COR_INICIA - COR_FINAL) / QTDE_DE_PIXELS```
+
+Sabendo de tal variação devemos incrementar o valor de cada novo pixel a este valor. O resultado é o seguinte:
+
+<p align="center">
+	<br>
+	<img src="./screenshots/drawTriangle.png"/>
+	<h5 align="center">Figura 7 - Rasterização de triângulos</h5>
+	<br>
+</p>
 ### Referências
 
 * [https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html](https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html)
