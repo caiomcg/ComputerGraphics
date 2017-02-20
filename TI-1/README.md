@@ -6,6 +6,7 @@ Algoritmos de rasterização
 * [Introdução](#introdução)
 * [Rasterização de pontos](#rasterização-de-pontos)
 * [Rasterização de retas](#rasterização-de-retas)
+* [Desenho de triângulos](#desenho-de-triângulos)
 * [Referências](#referências)
 
 ---
@@ -95,6 +96,85 @@ void DrawCanvas(int vertexSpread) {
 
 ### Rasterização de retas
 
+A rasterizaço de retas consiste em gerar pixels da forma mais ordenada possível com o intuito de gerar uma reta. Para alcançar tal objetivo foi utilizado o algoritmo de Bresenham que pode ser visto abaixo.
+
+```C++
+void DrawLine(Vertex initialVertex, Vertex finalVertex) {
+    int xDistance    = finalVertex.x - initialVertex.x;
+    int yDistance    = finalVertex.y - initialVertex.y;
+
+    int currentY     = initialVertex.y;
+    int baseDistance = (yDistance << 1) - xDistance;
+
+    int eIncrement   = (yDistance << 1);
+    int seIncrement  = (yDistance - xDistance) << 1;
+
+    PutPixel(Vertex(initialVertex.x, currentY, initialVertex.color));
+
+    for (int currentX = initialVertex.x + 1; currentX <= finalVertex.x; currentX++) {
+        if (baseDistance <= 0) {
+            baseDistance += eIncrement;
+        } else {
+            currentY++;
+            baseDistance += seIncrement;
+        }
+        PutPixel(Vertex(currentX, currentY, initialVertex.color));
+    }
+}
+```
+
+Porém, o algoritmo acima só desenha linhas para o primeiro octante, ou seja, retas que se encontram entre 0º e 45º.
+Para melhor exemplificar uma captura de tela do algoritmo acima sendo executado pode ser vista abaixo.
+
+<p align="center">
+	<br>
+	<img src="./screenshots/DrawLine.png"/>
+	<h5 align="center">Figura 3 - DrawLine para o primeiro octante</h5>
+	<br>
+</p>
+
+Para generalizar o algoritmo deve-se;
+
+* Calcular a variação do ponto de origem para o ponto de destino da reta.
+* Examinar tal variação para que se possa indicar se devemos incrementar ou decrementar coordenadas para desenhar a reta.
+* Verificar a variação para que, se necessário, haja a troca dos componentes x, y.
+* Verificar as coordenadas para trocar os planos
+
+Para verificar as expressões condicionais é interessante seguir a seguinte tabela que exemplifica a posição da reta.
+
+<p align="center">
+	<br>
+	<img src="./screenshots/bresenhamGeneralization.png"/>
+	<h5 align="center">Figura 4 - Representação de Bresenham nos octantes</h5>
+	<br>
+</p>
+
+Como resultado temos:
+
+<p align="center">
+	<br>
+	<img src="./screenshots/BresenhamGeneralized.png"/>
+	<h5 align="center">Figura 5 - Bresenham generalizado</h5>
+	<br>
+</p>
+
+### Desenho de triângulos
+
+Após solucionar a generalização do algoritmo de Bresenham a rasterização de triângulos se torma trivial. Só precisamos desenhar as três linhas conectados aos vértices solicitado.
+
+```C++
+void DrawTriangle(Vertex fVertex, Vertex sVertex, Vertex tVertex) {
+    DrawLine(fVertex, sVertex);
+    DrawLine(sVertex, tVertex);
+    DrawLine(tVertex, fVertex);
+}
+```
+<p align="center">
+	<br>
+	<img src="./screenshots/drawTriangle.png"/>
+	<h5 align="center">Figura 6 - Rasterização de triângulos</h5>
+	<br>
+</p>
 
 ### Referências
 
