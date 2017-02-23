@@ -36,26 +36,12 @@ void DrawLine(Vertex initialVertex, Vertex finalVertex) {
     int currentY     = initialVertex.y;
     int currentX     = initialVertex.x;
 
-    if (xDistance < 0) {
-        xInitialIncrement = -1;
-        xFinalIncrement   = -1;
-    } else if (xDistance > 0) {
-        xInitialIncrement =  1;
-        xFinalIncrement   =  1;
-    }
-    if (yDistance < 0) {
-        yInitialIncrement = -1;
-    } else if (yDistance > 0) {
-        yInitialIncrement =  1;
-    }
+    xInitialIncrement = xFinalIncrement = (xDistance < 0 ? -1 : (xDistance > 0 ? 1 : 0));
+    yInitialIncrement = (yDistance < 0 ? -1 : (yDistance > 0 ? 1 : 0));
 
     if (fAxis < sAxis) {
         std::swap(fAxis, sAxis);
-        if (yDistance < 0) {
-            yFinalIncrement = -1;
-        } else if (yDistance > 0) {
-            yFinalIncrement =  1;
-        }
+        yFinalIncrement = (yDistance < 0 ? -1 : (yDistance > 0 ? 1 : 0));
         xFinalIncrement = 0;
     }
 
@@ -83,7 +69,7 @@ void DrawLine(Vertex initialVertex, Vertex finalVertex) {
         newColor[3] += variance[3];
 
         baseDistance += sAxis;
-        
+
         if (baseDistance <= fAxis) {
             currentX += xFinalIncrement;
             currentY += yFinalIncrement;
