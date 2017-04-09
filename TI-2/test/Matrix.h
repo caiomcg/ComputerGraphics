@@ -1,0 +1,25 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
+#include <vector>
+#include <string>
+
+class Matrix {
+protected:
+    int xDim;
+    int yDim;
+
+    std::vector<std::vector<double> > matrix;
+
+private:
+    void createIdentityMatrix();
+
+public:
+    Matrix(const int xDim, const int yDim);
+    void setMatrix(std::vector<std::vector<double> > matrix) ;
+
+    Matrix* multiply(Matrix* matrix) const;
+
+    std::string toString();
+};
+#endif
