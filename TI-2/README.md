@@ -4,7 +4,7 @@ Pipeline Gráfico
 ## Menu
 
 * [Introdução](#introdução)
-* [Rasterização de pontos](#rasterização-de-pontos)
+* [Etapas do pipeline](#etapas-do-pipeline)
 
 ---
 
@@ -14,7 +14,7 @@ O objetivo do projeto consiste na implementação de um pipeline gráfico comple
 na linguagem C++ e todo o seu código fonte pode ser encontrado na pasta TI-2 deste repositório.
 
 O pipeline é uma série de passos que devem ser tomados para que uma cena possa ser levada do espaço 
-do ```objeto``` para o espaço da ```tela``` - **Figura 1**.
+do ```objeto``` para o espaço da ```tela``` - **Figura 1**. Abaixo veremos todas as etapas do pipeline.
 
 <p align="center">
 	<br>
@@ -22,8 +22,11 @@ do ```objeto``` para o espaço da ```tela``` - **Figura 1**.
 	<h5 align="center">Figura 1 - Imagem retirada dos slides da aula 5 - Introduction to the Graphics Pipeline</h5>
 	<br>
 </p>
+
 ---
 
-### Rasterização de pontos
+### Etapas do pipeline
+
+#### Espaço do objeto para o espaço do mundo
 
 ### Referências
