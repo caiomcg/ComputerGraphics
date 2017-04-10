@@ -69,6 +69,7 @@ void display(void)
 			glVertex3f(	objData->vertexList[o->vertex_index[0]]->e[0], // primeira linha
 						objData->vertexList[o->vertex_index[0]]->e[1],
 						objData->vertexList[o->vertex_index[0]]->e[2]);
+
 			glVertex3f(	objData->vertexList[o->vertex_index[1]]->e[0],
 						objData->vertexList[o->vertex_index[1]]->e[1],
 						objData->vertexList[o->vertex_index[1]]->e[2]);
@@ -76,6 +77,7 @@ void display(void)
 			glVertex3f(	objData->vertexList[o->vertex_index[1]]->e[0],	// segunda linha
 						objData->vertexList[o->vertex_index[1]]->e[1],
 						objData->vertexList[o->vertex_index[1]]->e[2]);
+
 			glVertex3f(	objData->vertexList[o->vertex_index[2]]->e[0],
 						objData->vertexList[o->vertex_index[2]]->e[1],
 						objData->vertexList[o->vertex_index[2]]->e[2]);
@@ -83,6 +85,7 @@ void display(void)
 			glVertex3f(	objData->vertexList[o->vertex_index[2]]->e[0],	// terceira linha
 						objData->vertexList[o->vertex_index[2]]->e[1],
 						objData->vertexList[o->vertex_index[2]]->e[2]);
+
 			glVertex3f(	objData->vertexList[o->vertex_index[0]]->e[0],
 						objData->vertexList[o->vertex_index[0]]->e[1],
 						objData->vertexList[o->vertex_index[0]]->e[2]);
@@ -224,8 +227,8 @@ void PrintModelInfo(objLoader* ptr)
 		
 		printf(" reflect: %.2f\n", mtl->reflect);
 		printf(" trans: %.2f\n", mtl->trans);
-		printf(" glossy: %i\n", mtl->glossy);
-		printf(" shiny: %i\n", mtl->shiny);
+		printf(" glossy: %lf\n", mtl->glossy);
+		printf(" shiny: %lf\n", mtl->shiny);
 		printf(" refact: %.2f\n", mtl->refract_index);
 
 		printf(" texture: %s\n", mtl->texture_filename);
@@ -269,7 +272,7 @@ void FreeMemFunc(void)
 int main(int argc, char **argv)
 {
 	objData = new objLoader();			// cria o objeto que carrega o modelo
-	objData->load("monkey_head2.obj");	// a carga do modelo é indicada atraves do nome do arquivo. 
+	objData->load((char*)"monkey_head2.obj");	// a carga do modelo é indicada atraves do nome do arquivo.
 										// Neste caso, deve ser sempre do tipo OBJ.
 
 	// Habilite esta função se você deseja imprimir na tela dados do modelo

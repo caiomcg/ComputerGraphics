@@ -4,6 +4,12 @@
 #include <vector>
 #include <string>
 
+enum Axis {
+    X,
+    Y,
+    Z
+};
+
 class Matrix {
 protected:
     int xDim;
@@ -17,9 +23,7 @@ private:
 public:
     Matrix(const int xDim, const int yDim);
     void setMatrix(std::vector<std::vector<double> > matrix) ;
-
     Matrix* multiply(Matrix* matrix) const;
-
     std::string toString();
 };
 #endif
