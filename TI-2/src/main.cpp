@@ -59,38 +59,11 @@ void display(void)
 	// Cada linha eh formada por 2 pontos (inicial e final).
 	///////////////////////////////////////////////////////////////////////////
 
-	glColor3f(1.0f, 1.0f, 1.0f);
+	for (int i = 0; i < objData->faceCount; i++) {
+        obj_face *o = objData->faceList[i];
+    }
 
-	glBegin(GL_LINES);
-		for(int i=0; i<objData->faceCount; i++)
-		{
-			obj_face *o = objData->faceList[i];
 
-			glVertex3f(	objData->vertexList[o->vertex_index[0]]->e[0], // primeira linha
-						objData->vertexList[o->vertex_index[0]]->e[1],
-						objData->vertexList[o->vertex_index[0]]->e[2]);
-
-			glVertex3f(	objData->vertexList[o->vertex_index[1]]->e[0],
-						objData->vertexList[o->vertex_index[1]]->e[1],
-						objData->vertexList[o->vertex_index[1]]->e[2]);
-
-			glVertex3f(	objData->vertexList[o->vertex_index[1]]->e[0],	// segunda linha
-						objData->vertexList[o->vertex_index[1]]->e[1],
-						objData->vertexList[o->vertex_index[1]]->e[2]);
-
-			glVertex3f(	objData->vertexList[o->vertex_index[2]]->e[0],
-						objData->vertexList[o->vertex_index[2]]->e[1],
-						objData->vertexList[o->vertex_index[2]]->e[2]);
-
-			glVertex3f(	objData->vertexList[o->vertex_index[2]]->e[0],	// terceira linha
-						objData->vertexList[o->vertex_index[2]]->e[1],
-						objData->vertexList[o->vertex_index[2]]->e[2]);
-
-			glVertex3f(	objData->vertexList[o->vertex_index[0]]->e[0],
-						objData->vertexList[o->vertex_index[0]]->e[1],
-						objData->vertexList[o->vertex_index[0]]->e[2]);
-		}
-	glEnd();
 
 	glFlush();
 	glutSwapBuffers();
@@ -98,7 +71,7 @@ void display(void)
 }
 
 //-----------------------------------------------------------------------------
-// Funcao que imprime as coordenadas de um vertice. 
+// Funcao que imprime as coordenadas de um vertice.
 // Pode ser utilizada para fazer debug de código.
 void printVector(obj_vector *v)
 {
@@ -277,7 +250,7 @@ int main(int argc, char **argv)
 
 	// Habilite esta função se você deseja imprimir na tela dados do modelo
 	// gerados durante a sua carga.
-	//PrintModelInfo(objData);
+	PrintModelInfo(objData);
 
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);

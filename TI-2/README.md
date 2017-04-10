@@ -27,6 +27,16 @@ do ```objeto``` para o espaço da ```tela``` - **Figura 1**. Abaixo veremos toda
 
 ### Etapas do pipeline
 
-#### Espaço do objeto para o espaço do mundo
+#### Espaço do objeto para o espaço do universo
+
+A primeira etapa do pipeline leva os objetos para o universo da cena, para tal
+são usadas operações elementares que podem ser representadas como matrizes, dentre
+estas operações podemos citar: escala, shear, translação e rotação. Portanto ao 
+aplicarmos estas operações em nosso objeto colocamos o mesmo em função do eixo que 
+representa o universo. A união de n matrizes distintas é denominada matriz model.
+
+
+
+
 
 ### Referências
