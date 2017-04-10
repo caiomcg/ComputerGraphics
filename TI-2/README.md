@@ -18,7 +18,7 @@ do ```objeto``` para o espaço da ```tela``` - **Figura 1**.
 
 <p align="center">
 	<br>
-	<img src="./screenshots/pipeline.png"/ width=600px height=400px>
+	<img src="./screenshots/pipeline.png"/ width=600px height=200px>
 	<h5 align="center">Figura 1 - Imagem retirada dos slides da aula 5 - Introduction to the Graphics Pipeline</h5>
 	<br>
 </p>
