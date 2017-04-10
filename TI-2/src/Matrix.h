@@ -22,8 +22,11 @@ private:
 
 public:
     Matrix(const int xDim, const int yDim);
-    void setMatrix(std::vector<std::vector<double> > matrix) ;
+    void setMatrix(std::vector<std::vector<double> > matrix);
     Matrix* multiply(Matrix* matrix) const;
+    Matrix* divide(Matrix* matrix, const double scalar) const;
+
+    std::vector<std::vector<double> > getMatrix() const;
     std::string toString();
 };
 #endif

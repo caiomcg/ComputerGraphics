@@ -32,6 +32,28 @@ Matrix* Matrix::multiply(Matrix* matrix) const {
     return newMatrix;
 }
 
+Matrix* Matrix::divide(Matrix *matrix, const double scalar) const {
+
+    Matrix* newMatrix = new Matrix(xDim, yDim);
+    std::vector<std::vector<double> > temp = this->matrix;
+
+    if(scalar == 0.0)
+        throw std::overflow_error("division by zero not allowed.");
+
+    for(int i = 0; i < xDim; i++) {
+        for (int j = 0; j < yDim; j++) {
+            temp[i][j] = matrix[i][j] / scalar;
+        }
+    }
+
+    newMatrix->setMatrix(temp);
+    return newMatrix;
+}
+
+std::vector<std::vector<double> > Matrix::getMatrix() const {
+    return matrix;
+}
+
 std::string Matrix::toString() {
     std::string out;
 

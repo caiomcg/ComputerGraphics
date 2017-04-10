@@ -3,9 +3,13 @@
 #include <iostream>
 #include <stdio.h>
 #include "objLoader.h"
+#include "Pipeline.h"
 
 // Ponteiro para o objeto que carregará o modelo 3D (formato OBJ).
 objLoader *objData;
+
+// Ponteiro para o pipeline gráfico.
+Pipeline* pipeline;
 
 unsigned int ViewPortWidth  = 512;
 unsigned int ViewPortHeight = 512;
@@ -71,166 +75,6 @@ void display(void)
 }
 
 //-----------------------------------------------------------------------------
-// Funcao que imprime as coordenadas de um vertice.
-// Pode ser utilizada para fazer debug de código.
-void printVector(obj_vector *v)
-{
-	printf("%.2f,", v->e[0] );
-	printf("%.2f,", v->e[1] );
-	printf("%.2f  ", v->e[2] );
-}
-
-//-----------------------------------------------------------------------------
-// Esta funcao apenas imprime informacoes referentes ao modelo que foi carregado, 
-// tais como numero de vertices, normais, fontes de luz, etc.
-void PrintModelInfo(objLoader* ptr)
-{
-	printf("Number of vertices: %i\n", ptr->vertexCount);
-	printf("Number of vertex normals: %i\n", ptr->normalCount);
-	printf("Number of texture coordinates: %i\n", ptr->textureCount);
-	printf("\n");
-	
-	printf("Number of faces: %i\n", ptr->faceCount);
-	for(int i=0; i<ptr->faceCount; i++)
-	{
-		obj_face *o = ptr->faceList[i];
-		printf(" face ");
-		for(int j=0; j<3; j++)
-		{
-			printVector(ptr->vertexList[ o->vertex_index[j] ]);
-		}
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	printf("Number of spheres: %i\n", ptr->sphereCount);
-	for(int i=0; i<ptr->sphereCount; i++)
-	{
-		obj_sphere *o = ptr->sphereList[i];
-		printf(" sphere ");
-		printVector(ptr->vertexList[ o->pos_index ]);
-		printVector(ptr->normalList[ o->up_normal_index ]);
-		printVector(ptr->normalList[ o->equator_normal_index ]);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	printf("Number of planes: %i\n", ptr->planeCount);
-	for(int i=0; i<ptr->planeCount; i++)
-	{
-		obj_plane *o = ptr->planeList[i];
-		printf(" plane ");
-		printVector(ptr->vertexList[ o->pos_index ]);
-		printVector(ptr->normalList[ o->normal_index]);
-		printVector(ptr->normalList[ o->rotation_normal_index]);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	printf("Number of point lights: %i\n", ptr->lightPointCount);
-	for(int i=0; i<ptr->lightPointCount; i++)
-	{
-		obj_light_point *o = ptr->lightPointList[i];
-		printf(" plight ");
-		printVector(ptr->vertexList[ o->pos_index ]);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	printf("Number of disc lights: %i\n", ptr->lightDiscCount);
-	for(int i=0; i<ptr->lightDiscCount; i++)
-	{
-		obj_light_disc *o = ptr->lightDiscList[i];
-		printf(" dlight ");
-		printVector(ptr->vertexList[ o->pos_index ]);
-		printVector(ptr->normalList[ o->normal_index ]);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	printf("Number of quad lights: %i\n", ptr->lightQuadCount);
-	for(int i=0; i<ptr->lightQuadCount; i++)
-	{
-		obj_light_quad *o = ptr->lightQuadList[i];
-		printf(" qlight ");
-		printVector(ptr->vertexList[ o->vertex_index[0] ]);
-		printVector(ptr->vertexList[ o->vertex_index[1] ]);
-		printVector(ptr->vertexList[ o->vertex_index[2] ]);
-		printVector(ptr->vertexList[ o->vertex_index[3] ]);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	if(ptr->camera != NULL)
-	{
-		printf("Found a camera\n");
-		printf(" position: ");
-		printVector(ptr->vertexList[ ptr->camera->camera_pos_index ]);
-		printf("\n looking at: ");
-		printVector(ptr->vertexList[ ptr->camera->camera_look_point_index ]);
-		printf("\n up normal: ");
-		printVector(ptr->normalList[ ptr->camera->camera_up_norm_index ]);
-		printf("\n");
-	}
-
-	printf("\n");
-
-	printf("Number of materials: %i\n", ptr->materialCount);
-	for(int i=0; i<ptr->materialCount; i++)
-	{
-		obj_material *mtl = ptr->materialList[i];
-		printf(" name: %s", mtl->name);
-		printf(" amb: %.2f ", mtl->amb[0]);
-		printf("%.2f ", mtl->amb[1]);
-		printf("%.2f\n", mtl->amb[2]);
-
-		printf(" diff: %.2f ", mtl->diff[0]);
-		printf("%.2f ", mtl->diff[1]);
-		printf("%.2f\n", mtl->diff[2]);
-
-		printf(" spec: %.2f ", mtl->spec[0]);
-		printf("%.2f ", mtl->spec[1]);
-		printf("%.2f\n", mtl->spec[2]);
-		
-		printf(" reflect: %.2f\n", mtl->reflect);
-		printf(" trans: %.2f\n", mtl->trans);
-		printf(" glossy: %lf\n", mtl->glossy);
-		printf(" shiny: %lf\n", mtl->shiny);
-		printf(" refact: %.2f\n", mtl->refract_index);
-
-		printf(" texture: %s\n", mtl->texture_filename);
-		printf("\n");
-	}
-
-	printf("\n");
-	
-	//vertex, normal, and texture test
-	if(ptr->textureCount > 2 && ptr->normalCount > 2 && ptr->faceCount > 2)
-	{
-		printf("Detailed face data:\n");
-
-		for(int i=0; i<3; i++)
-		{
-			obj_face *o = ptr->faceList[i];
-			printf(" face ");
-			for(int j=0; j<3; j++)
-			{
-				printf("%i/", o->vertex_index[j] );
-				printf("%i/", o->texture_index[j] );
-				printf("%i ", o->normal_index[j] );
-			}
-			printf("\n");
-		}
-	}
-}
-
-//-----------------------------------------------------------------------------
 // Libera a memoria do objeto responsavel por guardar dados do modelo.
 void FreeMemFunc(void)
 {
@@ -238,6 +82,8 @@ void FreeMemFunc(void)
 
 	if (!objData)
 		delete objData;
+
+    pipeline->release();
 }
 
 //-----------------------------------------------------------------------------
@@ -248,9 +94,7 @@ int main(int argc, char **argv)
 	objData->load((char*)"monkey_head2.obj");	// a carga do modelo é indicada atraves do nome do arquivo.
 										// Neste caso, deve ser sempre do tipo OBJ.
 
-	// Habilite esta função se você deseja imprimir na tela dados do modelo
-	// gerados durante a sua carga.
-	PrintModelInfo(objData);
+    pipeline = Pipeline::getInstance();
 
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
