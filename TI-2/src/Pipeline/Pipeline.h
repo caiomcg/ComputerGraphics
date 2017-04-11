@@ -5,27 +5,17 @@
 #ifndef PIPELINE_H
 #define PIPELINE_H
 
-#include <memory>
-#include "../Matrix/Matrix.h"
-
-#include "../Matrix/Scale.h"
-#include "../Matrix/Rotation.h"
-#include "../Matrix/Translation.h"
+#include "../../third_party/glm-0.9.7.4/glm/vec3.hpp"
+#include "../../third_party/glm-0.9.7.4/glm/mat4x4.hpp"
+#include "../../third_party/glm-0.9.7.4/glm/gtc/matrix_transform.hpp"
 
 class Pipeline {
 private:
     Pipeline();
-
-    Matrix* model;
-    Matrix* view;
-    Matrix* projection;
-    Matrix* viewPort;
-
-
 public:
     static Pipeline& getInstance();
 
-    void init(const double pos[3], const double look[3], const double up[3]);
+    void init();
 
     void release();
 };

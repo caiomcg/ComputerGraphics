@@ -5,6 +5,7 @@
 #include "Obj/objLoader.h"
 #include "Pipeline/Pipeline.h"
 
+
 // Ponteiro para o objeto que carregará o modelo 3D (formato OBJ).
 objLoader *objData;
 

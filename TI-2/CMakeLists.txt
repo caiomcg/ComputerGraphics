@@ -15,10 +15,12 @@ list(REMOVE_DUPLICATES ti-2_INCLUDE_DIRS)
 
 add_executable (${PROJECT_NAME} ${ti-2_SOURCES})
 
+INCLUDE("build_glm.cmake")
+
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
-include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
+include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} ${GLM_INCLUDE_DIRS})
 
-target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
 include_directories(${ti-2_INCLUDE_DIRS})
