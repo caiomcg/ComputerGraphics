@@ -38,11 +38,11 @@ Matrix* Matrix::divide(Matrix *matrix, const double scalar) const {
     std::vector<std::vector<double> > temp = this->matrix;
 
     if(scalar == 0.0)
-        throw std::overflow_error("division by zero not allowed.");
+        //throw std::overflow_error("division by zero not allowed.");
 
     for(int i = 0; i < xDim; i++) {
         for (int j = 0; j < yDim; j++) {
-            temp[i][j] = matrix[i][j] / scalar;
+            temp[i][j] = matrix->matrix[i][j] / scalar;
         }
     }
 

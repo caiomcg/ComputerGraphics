@@ -4,7 +4,6 @@
 
 #include "Pipeline.h"
 
-
 Pipeline::Pipeline() {
     model      = new Matrix(4,4);
     view       = new Matrix(4,4);
@@ -12,10 +11,8 @@ Pipeline::Pipeline() {
     viewPort   = new Matrix(4,4);
 }
 
-Pipeline* Pipeline::getInstance() {
-    if (instance == nullptr) {
-        instance = new Pipeline();
-    }
+Pipeline& Pipeline::getInstance() {
+    static Pipeline instance;
     return instance;
 }
 
@@ -43,7 +40,4 @@ void Pipeline::release() {
         delete viewPort;
         viewPort = nullptr;
     }
-
-    delete instance;
-    instance = nullptr;
 }

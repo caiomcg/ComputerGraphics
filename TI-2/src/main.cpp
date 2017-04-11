@@ -2,14 +2,14 @@
 #include <GL/glut.h>
 #include <iostream>
 #include <stdio.h>
-#include "objLoader.h"
-#include "Pipeline.h"
+#include "Obj/objLoader.h"
+#include "Pipeline/Pipeline.h"
 
 // Ponteiro para o objeto que carregará o modelo 3D (formato OBJ).
 objLoader *objData;
 
-// Ponteiro para o pipeline gráfico.
-Pipeline* pipeline;
+// Referência para o pipeline gráfico.
+Pipeline pipeline = Pipeline::getInstance();
 
 unsigned int ViewPortWidth  = 512;
 unsigned int ViewPortHeight = 512;
@@ -83,7 +83,7 @@ void FreeMemFunc(void)
 	if (!objData)
 		delete objData;
 
-    pipeline->release();
+    pipeline.release();
 }
 
 //-----------------------------------------------------------------------------
@@ -91,10 +91,8 @@ void FreeMemFunc(void)
 int main(int argc, char **argv)
 {
 	objData = new objLoader();			// cria o objeto que carrega o modelo
-	objData->load((char*)"monkey_head2.obj");	// a carga do modelo é indicada atraves do nome do arquivo.
+	objData->load((char*)argv[1]);	// a carga do modelo é indicada atraves do nome do arquivo.
 										// Neste caso, deve ser sempre do tipo OBJ.
-
-    pipeline = Pipeline::getInstance();
 
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
