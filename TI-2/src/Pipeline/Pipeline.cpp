@@ -41,20 +41,6 @@ glm::mat4 Pipeline::createMatrixProjection(const float viewPlaneDistance) {
     return matrixProjection;
 }
 
-glm::mat4 Pipeline::createMatrixScreen(const int width, const int height) {
-    glm::mat4 inverse = glm::mat4(1.0f);
-    inverse[1].y = -1;
-
-    glm::mat4 transition = glm::mat4(1.0f);
-    transition[3] = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-
-    glm::mat4 scale = glm::mat4(1.0f);
-    scale[0].x = (width-1) * 0.5f;
-    scale[1].y = (height-1) * 0.5f;
-
-    return scale * transition * inverse;
-}
-
 void Pipeline::setObjData(const std::string path) {
     loader = new objLoader();
     loader->load((char *) path.c_str());
@@ -75,12 +61,11 @@ void Pipeline::setScale(float x, float y, float z) {
 void Pipeline::init(const float zDistance, const float viewPlaneDistance, const int width, const int height) {
     glm::mat4 matrixView       = createMatrixView(zDistance);
     glm::mat4 matrixProjection = createMatrixProjection(viewPlaneDistance);
-    glm::mat4 matrixScreen     = createMatrixScreen(width, height);
 
-    this->show(matrixModel, matrixView, matrixProjection, matrixScreen);
+    this->show(matrixModel, matrixView, matrixProjection);
 }
 
-void Pipeline::show(glm::mat4 model, glm::mat4 view, glm::mat4 projection, glm::mat4 screen) {
+void Pipeline::show(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
     glm::mat4 matrixModelViewProjection = projection * view * model;
 
     for (int i = 0; i < loader->faceCount; i++) {
