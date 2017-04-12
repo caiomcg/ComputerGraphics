@@ -11,7 +11,9 @@
 
 class Pipeline {
 private:
+    glm::mat4 result;
     Pipeline();
+
 public:
     static Pipeline& getInstance();
 
