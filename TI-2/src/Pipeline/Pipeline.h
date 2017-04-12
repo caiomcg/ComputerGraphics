@@ -22,6 +22,7 @@ class Pipeline {
 private:
     objLoader* loader;
     glm::mat4 matrixModel;
+    glm::vec3 offset;
     Pipeline();
 
     glm::mat4 createMatrixView(const float zDistance);
@@ -32,15 +33,17 @@ public:
 
     void setObjData(const std::string path);
 
-    void addRotation(float angle, int x, int y, int z);
+    void setRotation(float angle, float x, float y, float z);
 
-    void addTransl(float x, float y, float z);
+    void setTranslation(float x, float y, float z);
 
-    void addScale(float x, float y, float z);
+    void setScale(float x, float y, float z);
 
     void init(const float zDistance, const float viewPlaneDistance, const int width, const int height);
 
     void show(glm::mat4 model, glm::mat4 view, glm::mat4 projection, glm::mat4 screen);
+
+    void clean();
 
     void release();
 };
