@@ -61,7 +61,7 @@ void Pipeline::setObjData(const std::string path) {
 }
 
 void Pipeline::setRotation(float angle, float x, float y, float z) {
-    matrixModel = glm::rotate(matrixModel, angle, glm::vec3(x, y, z)); // create a rotation matrix to the object
+    matrixModel = glm::rotate(matrixModel, angle, glm::vec3(x, y, z));
 }
 
 void Pipeline::setTranslation(float x, float y, float z) {
