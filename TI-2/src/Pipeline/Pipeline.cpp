@@ -86,11 +86,20 @@ void Pipeline::show(glm::mat4 model, glm::mat4 view, glm::mat4 projection, glm::
     for (int i = 0; i < loader->faceCount; i++) {
         obj_face* face = loader->faceList[i];
 
-        glm::vec4 pnt1 = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[0]]->e[0],loader->vertexList[face->vertex_index[0]]->e[1],loader->vertexList[face->vertex_index[0]]->e[2], 1.0f);
-        glm::vec4 pnt2 = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[1]]->e[0],loader->vertexList[face->vertex_index[1]]->e[1],loader->vertexList[face->vertex_index[1]]->e[2], 1.0f);
-        glm::vec4 pnt3 = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[2]]->e[0],loader->vertexList[face->vertex_index[2]]->e[1],loader->vertexList[face->vertex_index[2]]->e[2], 1.0f);
+        glm::vec4 fVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[0]]->e[0],
+                                                               loader->vertexList[face->vertex_index[0]]->e[1],
+                                                               loader->vertexList[face->vertex_index[0]]->e[2],
+                                                               1.0f);
+        glm::vec4 sVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[1]]->e[0],
+                                                               loader->vertexList[face->vertex_index[1]]->e[1],
+                                                               loader->vertexList[face->vertex_index[1]]->e[2],
+                                                               1.0f);
+        glm::vec4 tVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[2]]->e[0],
+                                                               loader->vertexList[face->vertex_index[2]]->e[1],
+                                                               loader->vertexList[face->vertex_index[2]]->e[2],
+                                                               1.0f);
 
-        drawTriangle(Pixel(pnt1.x, pnt1.y), Pixel(pnt2.x, pnt2.y), Pixel(pnt3.x, pnt3.y));
+        DrawTriangle(Vertex(fVertex.x, fVertex.y), Vertex(sVertex.x, sVertex.y), Vertex(tVertex.x, tVertex.y));
     }
 
     matrixModel = glm::mat4(1.0f);

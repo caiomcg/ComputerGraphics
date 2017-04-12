@@ -1,18 +1,18 @@
-#ifndef PIXEL_H
-#define PIXEL_H
+#ifndef VERTEX_H
+#define VERTEX_H
 
 #include "definitions.h"
 #include <stdexcept>
 
-class Pixel {
+class Vertex {
 private:
     int* position;
     int* RGBA;
 
 public:
-    Pixel(int x, int y, int* RGBA);
-    Pixel(int x, int y);
-    ~Pixel();
+    Vertex(int x, int y, int* RGBA);
+    Vertex(int x, int y);
+    ~Vertex();
     void setPosition (int x, int y);
     void setColor (int* RGBA);
     int* getPosition() const;

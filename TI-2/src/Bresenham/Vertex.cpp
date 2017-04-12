@@ -1,14 +1,14 @@
-#include "Pixel.h"
+#include "Vertex.h"
 #include <stdio.h>
 
-Pixel::Pixel (int x, int y, int* RGBA) {
+Vertex::Vertex (int x, int y, int* RGBA) {
     this->position = new int[2];
     this->RGBA = new int[4];
     setPosition(x,y);
     setColor(RGBA);
 }
 
-Pixel::Pixel (int x, int y) {
+Vertex::Vertex (int x, int y) {
     this->position = new int[2];
     this->RGBA = new int[4];
     setPosition(x,y);
@@ -17,7 +17,7 @@ Pixel::Pixel (int x, int y) {
     setColor(RGBA);
 }
 
-Pixel::~Pixel() {
+Vertex::~Vertex() {
     if(position != NULL) {
         delete []position;
     }
@@ -26,41 +26,41 @@ Pixel::~Pixel() {
     }
 }
 
-void Pixel::setPosition(int x, int y) {
+void Vertex::setPosition(int x, int y) {
 
     // if( x < 0 || x > IMAGE_WIDTH || y < 0 || y > IMAGE_HEIGHT ) {
     //     printf("Position (%d,%d)",x,y);
-    //     throw std::invalid_argument( "Invalid position of the pixel" );
+    //     throw std::invalid_argument( "Invalid position of the Vertex" );
     // }
 
     this->position[0] = x;
     this->position[1] = y;
 }
 
-void Pixel::setX(int x) {
+void Vertex::setX(int x) {
 
     // if( x < 0 || x > IMAGE_WIDTH) {
-    //     throw std::invalid_argument( "Invalid position of the pixel" );
+    //     throw std::invalid_argument( "Invalid position of the Vertex" );
     // }
 
     this->position[0] = x;
 }
 
-void Pixel::setY(int y) {
+void Vertex::setY(int y) {
 
     // if(y < 0 || y > IMAGE_HEIGHT ) {
-    //     throw std::invalid_argument( "Invalid position of the pixel" );
+    //     throw std::invalid_argument( "Invalid position of the Vertex" );
     // }
 
     this->position[1] = y;
 }
 
-void Pixel::setColor(int* RGBA) {
+void Vertex::setColor(int* RGBA) {
 
     for(int index = 0 ; index <= 3 ; index++) {
         if(RGBA[index] < 0 || RGBA[index] > 255) {
             printf("Color (%d,%d,%d)",RGBA[0],RGBA[1],RGBA[2]);
-            throw std::invalid_argument( "Invalid color of the pixel" );
+            throw std::invalid_argument( "Invalid color of the Vertex" );
         }
     }
 
@@ -69,18 +69,18 @@ void Pixel::setColor(int* RGBA) {
     }
 }
 
-int* Pixel::getPosition() const {
+int* Vertex::getPosition() const {
   return this->position;
 }
 
-int* Pixel::getColor() const {
+int* Vertex::getColor() const {
   return this->RGBA;
 }
 
-int Pixel::getX() const {
+int Vertex::getX() const {
   return this->position[0];
 }
 
-int Pixel::getY() const {
+int Vertex::getY() const {
   return this->position[1];
 }

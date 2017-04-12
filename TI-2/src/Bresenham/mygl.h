@@ -2,33 +2,14 @@
 #define _MYGL_H_
 
 #include "definitions.h"
-#include "Pixel.h"
+#include "Vertex.h"
 
 #include <math.h>
 #include <stdio.h>
 
-//*****************************************************************************
-// Defina aqui as suas funções gráficas
-//*****************************************************************************
+void PutPixel(const Vertex& px);
 
-//*************************************************************************
-// drawPixel
-//*************************************************************************
-void putPixel(const Pixel& px);
-//*************************************************************************
-// drawLine
-//*************************************************************************
-void drawLine(const Pixel& px1,const Pixel& px2);
+void DrawLine(const Vertex& px1,const Vertex& px2);
 
-//*************************************************************************
-// drawTriangle
-//*************************************************************************
-
-void drawTriangle(const Pixel& px1,const Pixel& px2,const Pixel& px3);
-//*************************************************************************
-// drawCircle
-//*************************************************************************
-
-void drawCircle(const Pixel& px, const int radius);
-
+void DrawTriangle(const Vertex& px1,const Vertex& px2,const Vertex& px3);
 #endif
