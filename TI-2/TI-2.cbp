@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="TI-2" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/caiomcg/Workspace/ComputerGraphics/TI-2" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/caiomcg/Workspace/ComputerGraphics/TI-2" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/caiomcg/Workspace/ComputerGraphics/TI-2" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TI-2">
+         <Option output="/home/caiomcg/Workspace/ComputerGraphics/TI-2/TI-2" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/caiomcg/Workspace/ComputerGraphics/TI-2" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Pipeline" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/third_party/glm-0.9.7.4" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 TI-2" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TI-2/fast">
+         <Option output="/home/caiomcg/Workspace/ComputerGraphics/TI-2/TI-2" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/caiomcg/Workspace/ComputerGraphics/TI-2" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Pipeline" />
+            <Add directory="/home/caiomcg/Workspace/ComputerGraphics/TI-2/third_party/glm-0.9.7.4" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 TI-2/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/caiomcg/Workspace/ComputerGraphics/TI-2/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/Pixel.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/Pixel.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/definitions.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/definitions.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/mygl.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Bresenham/mygl.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/list.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/list.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/objLoader.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/objLoader.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/obj_parser.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/obj_parser.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/string_extra.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Obj/string_extra.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Pipeline/Pipeline.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/Pipeline/Pipeline.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/main.cpp">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/src/main.h">
+         <Option target="TI-2"/>
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/caiomcg/Workspace/ComputerGraphics/TI-2/build_glm.cmake">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
