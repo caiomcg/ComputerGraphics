@@ -31,8 +31,8 @@ do ```objeto``` para o espaço da ```tela```. Abaixo veremos todas as etapas do 
 
 A primeira etapa do pipeline leva os objetos para o universo da cena, para tal
 são usadas operações elementares que podem ser representadas como matrizes, dentre
-estas operações podemos citar: escala, shear, translação e rotação. Portanto ao 
-aplicarmos estas operações em nosso objeto colocamos o mesmo em função do eixo que 
+estas operações podemos citar: escala, shear, translação e rotação. Portanto, ao 
+aplicarmos estas operações em nosso objeto, colocamos o mesmo em função do eixo que 
 representa o universo. A união de n matrizes distintas é denominada matriz model.
 
 Para criar a matriz model - união das matrizes que irão afetar os objetos - foram implementandos três métodos
