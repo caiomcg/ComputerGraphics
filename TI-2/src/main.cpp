@@ -14,16 +14,16 @@ void MyGlDraw(void) {
 
     pipeline.setTranslation(0.0f, 0.0f, 1.0f);
     pipeline.setRotation(translationFactor, 0.0f, 1.0f, 0.0f);
-    pipeline.setScale(0.75f, 0.75f, 0.75f);
+    pipeline.setScale(0.5f, 0.5f, 0.5f);
 
     pipeline.init(2.15f, 2.0f);
 
-    translationFactor += 0.005;
+    translationFactor += 0.05;
 }
 
 int main(int argc, char **argv)
 {
-    pipeline.setObjData("assets/monkey_head2.obj");
+    pipeline.setObjData(argv[1]);
 
     InitOpenGL(&argc, argv);
     InitCallBacks();
