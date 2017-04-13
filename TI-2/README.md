@@ -62,8 +62,8 @@ final da criação do pipeline está matriz será multiplicada pelas matrizes, v
 
 #### Espaço do universo para o espaço da câmera
 
-Nesta etapa é definida a forma como a cena é vista pelo usuário, para tal, deifinimos o eixo
-onde a câmera está posicionada. O eixo é dado por:
+Nesta etapa é definida a forma como a cena é vista pelo usuário, para tal, definimos o eixo
+onde a câmera está posicionada. O mesmo é dado por:
 
 * Camera Position: A posição da câmera no espaço do universo;
 * View Direction: A direção aonde a câmera está olhando;
@@ -116,7 +116,35 @@ glm::mat4 Pipeline::createMatrixProjection(const float viewPlaneDistance) {
 
 O processo de mover os vértices para o espaço de canônico chama-se homogeneização.
 A mesma consiste em dividir todos os componentes do vértice pela sua coordenada
-homogênea.
+homogênea. O método Pipeline::toScreenSpace(...) faz tanto a homogienização quanto
+a passagem para o espaço da tela.
+
+```C++
+void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVertex, glm::vec4& secondVertex, glm::vec4& thirdVertex) {
+    glm::mat4 invert;
+    invert[1].y = -1;
+
+    glm::mat4 translate(1.0f);
+    translate[3] = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+
+    glm::mat4 scale(1.0f);
+    scale[0].x = (IMAGE_WIDTH-1) * 0.5f;
+    scale[1].y = (IMAGE_HEIGHT-1) * 0.5f;
+
+    glm::mat4 screenMatrix = scale * translate * invert;
+
+    firstVertex = modelViewProjection * firstVertex;
+    secondVertex = modelViewProjection * secondVertex;
+    thirdVertex = modelViewProjection * thirdVertex;
+
+    firstVertex = screenMatrix * firstVertex / firstVertex.w;
+    secondVertex = screenMatrix * secondVertex / secondVertex.w;
+    thirdVertex = screenMatrix * thirdVertex / thirdVertex.w;
+}
+```
+#### Espaço canônico para o espaço da tela
+
+A etapa final é preparar os vértices para a exibição da tela, fazemos as alterações finais ao multiplicarmos os vértices pela matriz viewport - na implementação screenMatrix. A viewport consiste em uma matriz composta de duas escalas e uma translação. Tais matrizes podem ser vistas a seguir:
 
 ```C++
 void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVertex, glm::vec4& secondVertex, glm::vec4& thirdVertex) {
