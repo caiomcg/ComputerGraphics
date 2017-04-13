@@ -29,6 +29,13 @@ do ```objeto``` para o espaço da ```tela```. Abaixo veremos todas as etapas do 
 
 #### Espaço do objeto para o espaço do universo
 
+<p align="center">
+	<br>
+	<img src="./screenshots/objet_to_space.png"/ width=600px height=250px>
+	<h5 align="center">Figura 2 - Imagem retirada dos slides da aula 8 - Modeling and View Transform</h5>
+	<br>
+</p>
+
 A primeira etapa do pipeline leva os objetos para o universo da cena, para tal
 são usadas operações elementares que podem ser representadas como matrizes, dentre
 estas operações podemos citar: escala, shear, translação e rotação. Portanto, ao 
@@ -61,6 +68,13 @@ A chamada desses métodos afeta a model, seja escalando, rotacionando ou transla
 final da criação do pipeline está matriz será multiplicada pelas matrizes, view e transform.
 
 #### Espaço do universo para o espaço da câmera
+
+<p align="center">
+	<br>
+	<img src="./screenshots/space_to_camera.png"/ width=600px height=300px>
+	<h5 align="center">Figura 3 - Imagem retirada dos slides da aula 8 - Modeling and View Transform</h5>
+	<br>
+</p>
 
 Nesta etapa é definida a forma como a cena é vista pelo usuário, para tal, definimos o eixo
 onde a câmera está posicionada. O mesmo é dado por:
@@ -171,3 +185,5 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
 ```
 
 ### Referências
+* Slides de aula
+* [GLM](http://glm.g-truc.net/0.9.8/index.html)
