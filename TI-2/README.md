@@ -71,7 +71,7 @@ final da criação do pipeline está matriz será multiplicada pelas matrizes, v
 
 <p align="center">
 	<br>
-	<img src="./screenshots/space_to_camera.png"/ width=600px height=300px>
+	<img src="./screenshots/space_to_camera.png"/ width=600px height=400px>
 	<h5 align="center">Figura 3 - Imagem retirada dos slides da aula 8 - Modeling and View Transform</h5>
 	<br>
 </p>
@@ -187,7 +187,14 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
 ### Resultados
 
 
-Abaixo seguem duas imagens, a figura 4 mostra o objeto sem a passagem pelo espaço canônico, já a figura 5 mostra o objeto com passagem completa pelo pipeline - versão final.
+Abaixo seguem duas imagens, a figura 4 mostra a rasterização de um stormtrooper na tela, já a figura 5 mostra o macaco fornecido com o problema proposto.
+
+<p align="center">
+	<br>
+	<img src="./screenshots/stormtrooper.png"/ width=600px height=620px>
+	<h5 align="center">Figura 4 - stormtrooper(Fornecedor do modelo: http://tf3dm.com/3d-model/puo-4041-7174.html)</h5>
+	<br>
+</p>
 
 <p align="center">
 	<br>
