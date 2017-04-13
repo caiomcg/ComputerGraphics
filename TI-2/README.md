@@ -6,6 +6,7 @@ Pipeline Gráfico
 * [Introdução](#introdução)
 * [Etapas do pipeline](#etapas-do-pipeline)
 * [Resultados](#resultados)
+* [Melhorias](#melhorias)
 ---
 
 ## Introdução
@@ -222,6 +223,10 @@ O video a seguir contém o resultado em execução:
         </p>
     </div>
 </a>
+
+### Melhorias
+
+A implementação pode tratar melhor possíveis erros, como por exemplo o fornecimento errado de um obj que atualmente só exibe a tela preta. O código também pode ser documentado e trechos de código podem ser melhor alocados em escopos diferentes.
 
 ### Referências
 * Slides de aula
