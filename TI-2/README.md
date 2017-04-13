@@ -37,7 +37,7 @@ do ```objeto``` para o espaço da ```tela```. Abaixo veremos todas as etapas do 
 </p>
 
 A primeira etapa do pipeline leva os objetos para o universo da cena, para tal
-são usadas operações elementares que podem ser representadas como matrizes, dentre
+são usadas operações elementares que podem ser representadas como matrizes. Dentre
 estas operações podemos citar: escala, shear, translação e rotação. Portanto, ao 
 aplicarmos estas operações em nosso objeto, colocamos o mesmo em função do eixo que 
 representa o universo. A união de n matrizes distintas é denominada matriz model.
@@ -64,8 +64,8 @@ void Pipeline::setScale(float x, float y, float z) {
 ```
 
 
-A chamada desses métodos afeta a model, seja escalando, rotacionando ou transladando os objetos da cena. No passo 
-final da criação do pipeline está matriz será multiplicada pelas matrizes, view e transform.
+A chamada desses métodos afeta a model, seja escalando, rotacionando ou transladando os objetos da cena - o shear não foi implementado pois o resultado que o mesmo fornece pode ser obtido através da combinação de rotações e escala. No passo 
+final da criação do pipeline está matriz será multiplicada pelas matrizes, view, transform e viewport.
 
 #### Espaço do universo para o espaço da câmera
 
@@ -130,7 +130,7 @@ glm::mat4 Pipeline::createMatrixProjection(const float viewPlaneDistance) {
 
 O processo de mover os vértices para o espaço de canônico chama-se homogeneização.
 A mesma consiste em dividir todos os componentes do vértice pela sua coordenada
-homogênea. O método Pipeline::toScreenSpace(...) faz tanto a homogienização quanto
+homogênea. O método Pipeline::toScreenSpace(...) faz tanto a homogeneização quanto
 a passagem para o espaço da tela.
 
 ```C++
@@ -158,7 +158,7 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
 ```
 #### Espaço canônico para o espaço da tela
 
-A etapa final é preparar os vértices para a exibição da tela, fazemos as alterações finais ao multiplicarmos os vértices pela matriz viewport - na implementação screenMatrix. A viewport consiste em uma matriz composta de duas escalas e uma translação. Tais matrizes podem ser vistas a seguir:
+A etapa final é preparar os vértices para a exibição na tela, fazemos as alterações finais ao multiplicarmos os vértices pela matriz viewport - na implementação é chamado screenMatrix. A viewport consiste em uma matriz composta de duas escalas e uma translação. Tais matrizes podem ser vistas a seguir:
 
 ```C++
 void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVertex, glm::vec4& secondVertex, glm::vec4& thirdVertex) {
@@ -186,7 +186,7 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
 
 ### Resultados
 
-Para a execução dos exemplos abaixo é utilizado o seguinte trecho de código do main loop - loop que é invocado a cada novo frame. Onde clean limpa a tela, set translation, rotatio e scale adicionam transformações nos objetos do universo e init calcula todo o pipeline e rasteriza os triângulos.
+Para a execução dos exemplos abaixo é utilizado o seguinte trecho de código do main loop - loop que é invocado a cada novo frame. Onde clean limpa a tela, set translation, rotation e scale adicionam transformações nos objetos do universo e init calcula todo o pipeline e rasteriza os triângulos.
 
 
 <p align="center">
