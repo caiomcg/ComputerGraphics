@@ -11,11 +11,12 @@ float translationFactor = 0.0f;
 
 void MyGlDraw(void) {
     pipeline.clean();
-    pipeline.setRotation(translationFactor, 0.0f, 1.0f, 0.0f);
-    pipeline.setRotation(30, 1.0f, 0.0f, 0.0f);
-    pipeline.setTranslation(0.0f, 0.0f, 1.0f);
 
-    pipeline.init(2.15f, 2.0f, IMAGE_WIDTH, IMAGE_HEIGHT);
+    pipeline.setTranslation(0.0f, 0.0f, 1.0f);
+    pipeline.setRotation(translationFactor, 0.0f, 1.0f, 0.0f);
+    pipeline.setScale(0.75f, 0.75f, 0.75f);
+
+    pipeline.init(2.15f, 2.0f);
 
     translationFactor += 0.005;
 }

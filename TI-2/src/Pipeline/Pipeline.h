@@ -28,6 +28,8 @@ private:
 
     glm::mat4 createMatrixView(const float zDistance);
     glm::mat4 createMatrixProjection(const float viewPlaneDistance);
+    void show(glm::mat4 model, glm::mat4 view, glm::mat4 projection);
+    void toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVertex, glm::vec4& secondVertex, glm::vec4& thirdVertex);
 public:
     static Pipeline& getInstance();
 
@@ -39,9 +41,9 @@ public:
 
     void setScale(float x, float y, float z);
 
-    void init(const float zDistance, const float viewPlaneDistance, const int width, const int height);
+    void init(const float zDistance, const float viewPlaneDistance);
 
-    void show(glm::mat4 model, glm::mat4 view, glm::mat4 projection);
+
 
     void clean();
 
