@@ -19,7 +19,7 @@ glm::mat4 Pipeline::createMatrixView(const float zDistance) {
     glm::vec3 viewDirection(0.0f, 0.0f, 0.0f);
     glm::vec3 upVector(0.0f, 1.0f, 0.0f);
 
-    glm::vec3 Zc = glm::normalize(viewDirection - cameraPosition);
+    glm::vec3 Zc = glm::normalize(cameraPosition - viewDirection);
     glm::vec3 Xc = glm::normalize(glm::cross(upVector, Zc));
     glm::vec3 Yc = glm::normalize(glm::cross(Zc, Xc));
 
@@ -71,20 +71,47 @@ void Pipeline::show(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
     for (int i = 0; i < loader->faceCount; i++) {
         obj_face* face = loader->faceList[i];
 
-        glm::vec4 fVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[0]]->e[0],
-                                                               loader->vertexList[face->vertex_index[0]]->e[1],
-                                                               loader->vertexList[face->vertex_index[0]]->e[2],
-                                                               1.0f);
-        glm::vec4 sVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[1]]->e[0],
-                                                               loader->vertexList[face->vertex_index[1]]->e[1],
-                                                               loader->vertexList[face->vertex_index[1]]->e[2],
-                                                               1.0f);
-        glm::vec4 tVertex = matrixModelViewProjection * glm::vec4(loader->vertexList[face->vertex_index[2]]->e[0],
-                                                               loader->vertexList[face->vertex_index[2]]->e[1],
-                                                               loader->vertexList[face->vertex_index[2]]->e[2],
-                                                               1.0f);
+        glm::vec4 fVec(loader->vertexList[face->vertex_index[0]]->e[0],
+                  loader->vertexList[face->vertex_index[0]]->e[1],
+                  loader->vertexList[face->vertex_index[0]]->e[2],
+                  1.0f);
+        glm::vec4 sVec(loader->vertexList[face->vertex_index[1]]->e[0],
+                  loader->vertexList[face->vertex_index[1]]->e[1],
+                  loader->vertexList[face->vertex_index[1]]->e[2],
+                  1.0f);
+        glm::vec4 tVec(loader->vertexList[face->vertex_index[2]]->e[0],
+                  loader->vertexList[face->vertex_index[2]]->e[1],
+                  loader->vertexList[face->vertex_index[2]]->e[2],
+                  1.0f);
 
-        DrawTriangle(Vertex(fVertex.x, fVertex.y), Vertex(sVertex.x, sVertex.y), Vertex(tVertex.x, tVertex.y));
+        fVec = matrixModelViewProjection * fVec;
+        sVec = matrixModelViewProjection * fVec;
+        tVec = matrixModelViewProjection * fVec;
+
+        fVec = fVec / fVec.w;
+        sVec = sVec / sVec.w;
+        tVec = tVec / tVec.w;
+
+        glm::mat4 inv_y;
+        glm::mat4 screen_trans;
+        glm::mat4 screen_scale;
+
+        inv_y[1].y = -1;
+        screen_trans[3] = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+        screen_scale[0].x = (IMAGE_WIDTH-1) * 0.5f;
+        screen_scale[1].y = (IMAGE_HEIGHT-1) * 0.5f;
+
+        glm::mat4 m_screen = screen_scale * screen_trans * inv_y;
+
+        if (fVec.w == 0)
+
+        fVec = glm::round(m_screen * fVec);
+        sVec = glm::round(m_screen * sVec);
+        tVec = glm::round(m_screen * tVec);
+
+        std::cout << "Drawing" << std::endl;
+
+        DrawTriangle(Vertex(fVec.x, fVec.y), Vertex(sVec.x, sVec.y), Vertex(tVec.x, tVec.y));
     }
 
     matrixModel = glm::mat4(1.0f);
