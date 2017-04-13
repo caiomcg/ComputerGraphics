@@ -203,6 +203,13 @@ Abaixo seguem duas imagens, a figura 4 mostra o objeto sem a passagem pelo espa�
 	<br>
 </p>
 
+Para melhor visualizar a diferença entre os macacos os seguintes links para o youtube podem ser acessados:
+
+[![Monkey](http://img.youtube.com/vi/7Z1W7OucOK4/0.jpg)](https://youtu.be/7Z1W7OucOK4 "Macaco sem a passagem pelo espaço canônico")
+
+[![Canonical Monkey](http://img.youtube.com/vi/HqQJV0f2Ujs/0.jpg)](https://youtu.be/HqQJV0f2Ujs "Macaco com a passagem pelo espaço canônico")
+
+
 ### Referências
 * Slides de aula
 * [GLM](http://glm.g-truc.net/0.9.8/index.html)
