@@ -31,7 +31,7 @@ do ```objeto``` para o espaço da ```tela```. Abaixo veremos todas as etapas do 
 
 <p align="center">
 	<br>
-	<img src="./screenshots/objet_to_space.png"/ width=600px height=250px>
+	<img src="./screenshots/objet_to_space.png"/ width=600px height=300px>
 	<h5 align="center">Figura 2 - Imagem retirada dos slides da aula 8 - Modeling and View Transform</h5>
 	<br>
 </p>
