@@ -113,7 +113,7 @@ glm::mat4 Pipeline::createMatrixView(const float zDistance) {
 
 Utilizando a matriz projection movemos todos os pontos do espaço da câmera
 para o espaço de recorte. Um ponto a ser ressaltado é o fato de que além da 
-passagem de um espaço para outro está matriz também realiza a distorção perpectiva
+passagem de um espaço para outro está matriz também realiza a distorção perspectiva
 na cena - obejetos mais próximos do view plane ficam maiores do que os que estão
 mais distantes. 
 
