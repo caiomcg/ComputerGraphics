@@ -5,7 +5,7 @@ Pipeline Gráfico
 
 * [Introdução](#introdução)
 * [Etapas do pipeline](#etapas-do-pipeline)
-
+* [Resultados](#resultados)
 ---
 
 ## Introdução
@@ -183,6 +183,25 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
     thirdVertex = screenMatrix * thirdVertex / thirdVertex.w;
 }
 ```
+
+### Resultados
+
+Inicialmente tive dificuldade de realizar a transição para o espaço canônico, porém o problema foi sanado ao reler o material fornecido.
+
+Abaixo seguem duas imagens, a figura 4 mostra o objeto sem a passagem pelo espaço canônico, já a figura 5 mostra o objeto com passagem completa pelo pipeline - versão final.
+<p align="center">
+	<br>
+	<img src="./screenshots/monkey.png"/ width=600px height=620px>
+	<h5 align="center">Figura 4 - Macaco sem a passagem pelo espaço canônico</h5>
+	<br>
+</p>
+
+<p align="center">
+	<br>
+	<img src="./screenshots/canonical_monkey.png"/ width=600px height=620px>
+	<h5 align="center">Figura 5 - Macaco com a passagem pelo espaço canônico</h5>
+	<br>
+</p>
 
 ### Referências
 * Slides de aula
