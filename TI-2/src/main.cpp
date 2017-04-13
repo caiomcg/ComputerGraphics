@@ -7,18 +7,19 @@
 // Referência para o pipeline gráfico.
 Pipeline pipeline = Pipeline::getInstance();
 
-float translationFactor = 0.0f;
+float rotationFactor = 0.0f;
+float scaleFactor = 0.5f;
 
 void MyGlDraw(void) {
     pipeline.clean();
 
     pipeline.setTranslation(0.0f, 0.0f, 1.0f);
-    pipeline.setRotation(translationFactor, 0.0f, 1.0f, 0.0f);
-    pipeline.setScale(0.5f, 0.5f, 0.5f);
+    pipeline.setRotation(rotationFactor, 0.0f, 1.0f, 0.0f);
+    pipeline.setScale(scaleFactor,scaleFactor,scaleFactor);
 
     pipeline.init(2.15f, 2.0f);
 
-    translationFactor += 0.05;
+    rotationFactor += 0.07f;
 }
 
 int main(int argc, char **argv)
