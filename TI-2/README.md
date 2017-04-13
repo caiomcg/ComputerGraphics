@@ -186,20 +186,29 @@ void Pipeline::toScreenSpace(glm::mat4& modelViewProjection, glm::vec4& firstVer
 
 ### Resultados
 
+Para a execução dos exemplos abaixo é utilizado o seguinte trecho de código do main loop - loop que é invocado a cada novo frame.
 
-Abaixo seguem duas imagens, a figura 4 mostra a rasterização de um stormtrooper na tela, já a figura 5 mostra o macaco fornecido com o problema proposto.
+<p align="center">
+	<br>
+	<img src="./screenshots/main_loop.png"/ width=600px height=200px>
+	<h5 align="center">Figura 4 - Main loop</h5>
+	<br>
+</p>
+
+
+Abaixo seguem duas imagens, a figura 5 mostra a rasterização de um stormtrooper na tela, já a figura 6 mostra o macaco fornecido com o problema proposto. Onde clean limpa a tela, set translation, rotatio e scale adicionam transformações nos objetos do universo e init calcula todo o pipeline e rasteriza os triângulos.
 
 <p align="center">
 	<br>
 	<img src="./screenshots/stormtrooper.png"/ width=600px height=620px>
-	<h5 align="center">Figura 4 - stormtrooper(Fornecedor do modelo: http://tf3dm.com/3d-model/puo-4041-7174.html)</h5>
+	<h5 align="center">Figura 5 - stormtrooper(Fornecedor do modelo: http://tf3dm.com/3d-model/puo-4041-7174.html)</h5>
 	<br>
 </p>
 
 <p align="center">
 	<br>
 	<img src="./screenshots/canonical_monkey.png"/ width=600px height=620px>
-	<h5 align="center">Figura 5 - Macaco</h5>
+	<h5 align="center">Figura 6 - Macaco</h5>
 	<br>
 </p>
 
