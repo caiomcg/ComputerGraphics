@@ -117,9 +117,3 @@ void Pipeline::show(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
 void Pipeline::clean() {
     memset(FBptr, 0, IMAGE_WIDTH * IMAGE_HEIGHT * 4);
 }
-
-void Pipeline::release() {
-    if (loader != nullptr) {
-        delete loader;
-    }
-}

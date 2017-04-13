@@ -43,11 +43,7 @@ public:
 
     void init(const float zDistance, const float viewPlaneDistance);
 
-
-
     void clean();
-
-    void release();
 };
 
 #endif //PIPELINE_H
