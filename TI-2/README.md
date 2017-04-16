@@ -84,7 +84,7 @@ onde a câmera está posicionada. O mesmo é dado por:
 * View Direction: A direção aonde a câmera está olhando;
 * Up Vector: Fixa a camêra em determinado eixo.
 
-Abaixo podemos ver toda a criação da câmera - matriz view.
+A partir destes três vetores conseguimos as coordenadas da câmera no universo. Abaixo podemos ver toda a criação da câmera - matriz view.
 
 ```C++
 glm::mat4 Pipeline::createMatrixView(const float zDistance) {
