@@ -217,7 +217,7 @@ Uma comparação entre a implementação fornecida no framework e a implementaç
 
 <p align="center">
 	<br>
-	<img src="./screenshots/loader_vs_implementation.png"/ width=600px height=620px>
+	<img src="./screenshots/loader_vs_implementation.png"/ >
 	<h5 align="center">Figura 7 - A esquerda a implementação do repositório e a direita a implementação do framework.</h5>
 	<br>
 </p>
