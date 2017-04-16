@@ -213,8 +213,16 @@ Abaixo seguem duas imagens, a figura 5 mostra a rasterização de um stormtroope
 	<br>
 </p>
 
-O video a seguir contém o resultado em execução:
+Uma comparação entre a implementação fornecida no framework e a implementação deste repositório foi feita e pode ser vista abaixo.
 
+<p align="center">
+	<br>
+	<img src="./screenshots/loader_vs_implementation.png"/ width=600px height=620px>
+	<h5 align="center">Figura 7 - A esquerda a implementação do repositório e a direita a implementação do framework.</h5>
+	<br>
+</p>
+
+O video a seguir contém o resultado em execução:
 
 <a href="https://youtu.be/HqQJV0f2Ujs">
     <div style="margin: 40px;">
