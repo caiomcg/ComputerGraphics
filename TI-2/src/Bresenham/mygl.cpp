@@ -4,7 +4,9 @@
 void PutPixel(const Vertex& px) {
     int pixelRealPosition = (px.getX()  + px.getY() * IMAGE_WIDTH) * 4;
     for (int i = 0; i <= 3; i++) {
-        FBptr[pixelRealPosition + i] = (int)px.getColor()[i];
+        if (px.getX() >= 0 && px.getX() <= IMAGE_WIDTH && px.getY() >= 0 && px.getY() <= IMAGE_HEIGHT) {
+            FBptr[pixelRealPosition + i] = (int) px.getColor()[i];
+        }
     }
 }
 

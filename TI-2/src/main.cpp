@@ -8,7 +8,7 @@
 Pipeline pipeline = Pipeline::getInstance();
 
 float rotationFactor = 0.0f;
-float scaleFactor = 0.5f;
+float scaleFactor = 0.7f;
 
 void MyGlDraw(void) {
     pipeline.clean();
@@ -24,6 +24,10 @@ void MyGlDraw(void) {
 
 int main(int argc, char **argv)
 {
+    if (argc < 2) {
+        std::cerr << "No path to .obj provided. Exiting..." << std::endl;
+        return 1;
+    }
     pipeline.setObjData(argv[1]);
 
     InitOpenGL(&argc, argv);
